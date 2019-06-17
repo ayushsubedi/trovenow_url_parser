@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{{ result.get("title", None) }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'css/bulma_trove.css') }}" />
+</head>
+
+<body>
+    <br></br>
+    <div class="columns is-mobile is-centered">
+        <div class="column is-full-mobile is-full-tablet is-two-thirds-desktop is-half-widescreen is-half-fullhd">
+            <p class="subtitle is-4">Trove URL Extraction</p>
+            <hr>
+            </hr>
+            <div class="content-section">
+                <form method="POST" action="">
+                    {{ form.hidden_tag() }}
+                    <div class="field">
+                        {{ form.url.label(class="label") }} {{ form.url(class="input") }}
+                    </div>
+                    <div class="field">
+                        {{ form.submit(class="button is-link") }}
+                    </div>
+                </form>
+            </div>
+
+            <hr>
+            </hr>
+            <p class="subtitle is-4">Fields and Responses</p>
+            <hr>
+            </hr>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Fields</th>
+                        <th scope="col">Response</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Status Code</td>
+                        <td>{{ result.get("code_content", None) }}</td>
+                    </tr>
+                    <tr>
+                        <td>Title</td>
+                        <td>{{ result.get("title", None) }}</td>
+                    </tr>
+                    <tr>
+                        <td>Movies</td>
+                        <td>{{ result.get("movies", None) }}</td>
+                    </tr>
+                    <tr>
+                        <td>Description</td>
+                        <td>{{ result.get("description", None) }}</td>
+                    </tr>
+                    <tr>
+                        <td>Type</td>
+                        <td>{{ result.get("type", None) }}</td>
+                    </tr>
+                    <tr>
+                        <td>Authors</td>
+                        <td>{{ result.get("authors", None) }}</td>
+                    </tr>
+                    <tr>
+                        <td>Published Date</td>
+                        <td>{{ result.get("publish_date", None) }}</td>
+                    </tr>
+                    <tr>
+                        <td>Top image</td>
+                        <td>{{ result.get("top_image", None) }}</td>
+                    </tr>
+                    <tr>
+                        <td>Keywords</td>
+                        <td>{{ result.get("keywords", None) }}</td>
+                    </tr>
+                    <tr>
+                        <td>Summary</td>
+                        <td>{{ result.get("summary", None) }}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <br></br>
+            <p class="subtitle is-4">Read Mode HTML</p>
+            <hr>
+            </hr>
+            <div>
+                {{ result.get("text", None) }}
+            </div>
+            <br></br>
+            <p class="subtitle is-4">Read Mode Rendered</p>
+            <hr>
+            </hr>
+            <div>
+                {{ result.get("text", None) | safe }}
+            </div>
+                        <br></br>
+
+
+        </div>
+    </div>
+
+</body>
+
+</html>
