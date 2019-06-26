@@ -12,7 +12,6 @@ application = Flask(__name__)
 # Windows
 dotenv_path = '.env'
 
-
 # Allow CORS for this app
 CORS(application)
 
