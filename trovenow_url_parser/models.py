@@ -25,7 +25,7 @@ class ContentReader:
                     _type = article.meta_data.get("og").get("type")
                 except:
                     _type = None
-                return {'code_content': 200, 'title': article.title, 'movies': article.movies, 'description': article.meta_description, 'type': _type, 'text': "", 'top_image': article.top_image, 'authors': article.authors, 'publish_date': article.publish_date, 'summary': "", 'keywords': new_keywords}
+                return {'code_content': 200, 'title': article.title, 'movies': article.movies, 'description': article.meta_description, 'type': _type, 'top_image': article.top_image, 'authors': article.authors, 'publish_date': article.publish_date}
             except Exception as e:
                 return {'code_content': 500, 'error': str(e)}
         return {'code_content': 404, 'msg': 'malinformed URL'}
