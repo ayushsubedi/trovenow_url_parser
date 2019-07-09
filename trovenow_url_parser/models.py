@@ -16,7 +16,7 @@ class ContentReader:
                     _type = title.split('.')[-1].lower()
                     image_list = ['jpeg', 'jpg', 'gif', 'png']
                     if (_type in image_list): _type='Image'
-                    # elif (_type=='pdf'):_type="PDFs"
+                    elif (_type=='pdf'):_type="PDFs"
                     return {'code_content': 204, 'title': title, 'type': _type, 'error:': "content is not html"}
                 article = Article(external_sites_url, keep_article_html=False)
                 article.download()
