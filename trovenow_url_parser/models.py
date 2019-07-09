@@ -12,17 +12,19 @@ class ContentReader:
                 content_type = response.headers['content-type']
                 extension = mimetypes.guess_extension(content_type)
                 if ((extension is not None) and extension != ".htm"):
-                    return {'code_content': 204, 'title': external_sites_url.split('/')[-1], 'error:': "content is not html"}
+                    title = external_sites_url.split('/')[-1]
+                    _type = title.split('.')[-1].lower()
+                    image_list = ['jpeg', 'jpg', 'gif', 'png']
+                    if (_type in image_list): _type='Image'
+                    elif (_type=='pdf'):_type="PDFs"
+                    return {'code_content': 204, 'title': title, 'type': _type, 'error:': "content is not html"}
                 article = Article(external_sites_url, keep_article_html=False)
                 article.download()
                 article.parse()
-                # article.nlp()
-                # new_keywords = []
-                # for word in article.keywords:
-                #     if (len(word) > 5):
-                #         new_keywords.append(word)
                 try:
-                    _type = article.meta_data.get("og").get("type")
+                    _type = article.meta_data.get("og").get("type").lower()
+                    if ('video' in _type): _type='Video'
+                    elif (_type=='article'): _type="Article"
                 except:
                     _type = None
                 return {'code_content': 200, 'title': article.title, 'movies': article.movies, 'description': article.meta_description, 'type': _type, 'top_image': article.top_image, 'authors': article.authors, 'publish_date': article.publish_date}
