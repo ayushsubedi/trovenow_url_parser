@@ -6,6 +6,10 @@ import mimetypes
 class ContentReader:
     @staticmethod
     def get_content(external_sites_url):
+        if not external_sites_url.startswith('http'):
+            external_sites_url = 'http://'+external_sites_url
+            r = requests.get(external_sites_url)
+            external_sites_url = r.url
         if (validators.url(external_sites_url)):
             try:
                 response = requests.get(external_sites_url)
