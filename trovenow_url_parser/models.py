@@ -3,6 +3,7 @@ import validators
 import requests
 import mimetypes
 
+
 class ContentReader:
     @staticmethod
     def get_content(external_sites_url):
@@ -35,5 +36,10 @@ class ContentReader:
                     _type = None
                 return {'url':external_sites_url, 'code_content': 200, 'title': article.title, 'movies': article.movies, 'description': article.meta_description, 'type': _type, 'top_image': article.top_image, 'authors': article.authors, 'publish_date': article.publish_date}
             except Exception as e:
+
+                # Slack webhook for tmp folder missing issue 
+                if "tmp" in str(e):
+                    response = requests.post('https://hooks.slack.com/services/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', headers={'Content-type': 'application/json',}, data= '{"text":"Restart"}')
                 return {'code_content': 500, 'error': str(e)}
+                
         return {'code_content': 404, 'msg': 'malinformed URL'}
