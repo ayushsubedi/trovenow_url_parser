@@ -2,6 +2,7 @@ from newspaper import Article
 import validators
 import requests
 import mimetypes
+import json
 
 
 class ContentReader:
@@ -13,6 +14,7 @@ class ContentReader:
             external_sites_url = r.url
         if (validators.url(external_sites_url)):
             try:
+              
                 response = requests.get(external_sites_url)
                 content_type = response.headers['content-type']
                 extension = mimetypes.guess_extension(content_type)
@@ -39,7 +41,7 @@ class ContentReader:
 
                 # Slack webhook for tmp folder missing issue 
                 if "tmp" in str(e):
-                    response = requests.post('https://hooks.slack.com/services/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', headers={'Content-type': 'application/json',}, data= '{"text":"Restart"}')
+                    response = requests.post('https://hooks.slack.com/services/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', headers={'Content-type': 'application/json',}, data=json.dumps({'text':'restart: '+external_sites_url}))
                 return {'code_content': 500, 'error': str(e)}
                 
         return {'code_content': 404, 'msg': 'malinformed URL'}
