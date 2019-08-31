@@ -33,9 +33,10 @@ class ContentReader:
                 try:
                     _type = article.meta_data.get("og").get("type").lower()
                     if ('video' in _type): _type='Video'
-                    elif (_type=='article'): _type="Article"       
+                    elif (_type=='article'): _type="Article"
+                    else: _type = "Website"       
                 except:
-                    _type = None
+                    _type = "Website"
                 return {'url':external_sites_url, 'code_content': 200, 'title': article.title, 'movies': article.movies, 'description': article.meta_description, 'type': _type, 'top_image': article.top_image, 'authors': article.authors, 'publish_date': article.publish_date}
             except Exception as e:
 
