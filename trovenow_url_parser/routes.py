@@ -9,7 +9,7 @@ def index():
     form = TroveForm()
     url = form.url.data
     if url is None:
-        url = "https://abc.xyz/"
+        url = "https://trovenow.com/"
     result = ContentReader.get_content(url)
     print (result)
     return render_template('demo.html', form=form, result=result)
