@@ -12,3 +12,8 @@ def get_content():
         summary = 'yes'
     result = ContentReader.get_content(url, summary=='yes')
     return jsonify(result)
+
+@application.route('/api/get_trending', methods=['GET'])
+def get_trending():
+    result = ContentReader.get_trending()
+    return jsonify(result)    
