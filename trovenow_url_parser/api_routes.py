@@ -6,7 +6,9 @@ from trovenow_url_parser.models import ContentReader
 def get_content():
     if request.method == 'POST':
         url = request.form['url']
+        summary = request.form.get('summary', 'no')
     else:
         url = request.args.get('url', None)
-    result = ContentReader.get_content(url)
+        summary = 'yes'
+    result = ContentReader.get_content(url, summary=='yes')
     return jsonify(result)
