@@ -4,6 +4,8 @@ import validators
 import requests
 import mimetypes
 import json
+from gensim.summarization import summarize
+
 
 class ContentReader:
     @staticmethod
@@ -36,12 +38,13 @@ class ContentReader:
                         return {'code_content': 204, 'title': title, 'type': _type, 'top_image': external_sites_url, 'message:': "content is not html"}
                     elif (_type=='pdf'):_type="PDFs"
                     return {'code_content': 204, 'title': title, 'type': _type, 'message:': "content is not html"}
-                article = Article(external_sites_url, keep_article_html=summary)
+                article = Article(external_sites_url, keep_article_html=False)
                 article.download()
                 article.parse()
                 new_keywords = []
+                article_summary = ''
                 if (summary):
-                    article.nlp()
+                    article_summary = summarize(article.text, word_count=150)
                     for word in article.keywords:
                         if (len(word) > 5):
                             new_keywords.append(word)
@@ -52,7 +55,7 @@ class ContentReader:
                     else: _type = "Website"       
                 except:
                     _type = "Website"
-                return {'url':external_sites_url, 'code_content': 200, 'title': article.title, 'movies': article.movies, 'description': article.meta_description, 'type': _type, 'top_image': article.top_image, 'authors': article.authors, 'publish_date': article.publish_date, 'text': article.article_html, 'summary': article.summary, 'keywords': new_keywords}
+                return {'url':external_sites_url, 'code_content': 200, 'title': article.title, 'movies': article.movies, 'description': article.meta_description, 'type': _type, 'top_image': article.top_image, 'authors': article.authors, 'publish_date': article.publish_date, 'text': article.article_html, 'summary': article_summary, 'keywords': new_keywords}
             except Exception as e:
 
                 # Slack webhook for tmp folder missing issue 

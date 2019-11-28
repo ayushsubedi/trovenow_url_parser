@@ -7,3 +7,4 @@ Flask-Cors==3.0.7
 Flask-Bcrypt==0.7.1
 python-dotenv==0.10.1
 validators==0.12.4
+gensim==3.8.1
