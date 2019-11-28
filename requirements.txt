@@ -1,10 +1,11 @@
-Flask==1.0.2
+Flask==1.1.1
 Flask-WTF==0.14.2
-Jinja2==2.10
+Jinja2==2.10.3
 newspaper3k==0.2.8 
-nltk==3.4
-Flask-Cors==3.0.7 
+nltk==3.4.5
+Flask-Cors==3.0.8 
 Flask-Bcrypt==0.7.1
-python-dotenv==0.10.1
-validators==0.12.4
+python-dotenv==0.10.3
+validators==0.14.0
 gensim==3.8.1
+awsebcli==3.16.0
