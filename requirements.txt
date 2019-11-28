@@ -9,3 +9,4 @@ python-dotenv==0.10.3
 validators==0.14.0
 gensim==3.8.1
 awsebcli==3.16.0
+Pillow==6.2.1
