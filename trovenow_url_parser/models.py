@@ -55,7 +55,8 @@ class ContentReader:
                     else: _type = "Website"       
                 except:
                     _type = "Website"
-                return {'url':external_sites_url, 'code_content': 200, 'title': article.title, 'movies': article.movies, 'description': article.meta_description, 'type': _type, 'top_image': article.top_image, 'authors': article.authors, 'publish_date': article.publish_date, 'text': article.article_html, 'summary': article_summary, 'keywords': new_keywords}
+                summary_flag = 1 if (len(article_summary)>130) else 0 
+                return {'summary_flag': summary_flag, 'url':external_sites_url, 'code_content': 200, 'title': article.title, 'movies': article.movies, 'description': article.meta_description, 'type': _type, 'top_image': article.top_image, 'authors': article.authors, 'publish_date': article.publish_date, 'text': article.article_html, 'summary': article_summary, 'keywords': new_keywords}
             except Exception as e:
 
                 # Slack webhook for tmp folder missing issue 
