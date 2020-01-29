@@ -18,7 +18,7 @@ CORS(application)
 load_dotenv(dotenv_path)
 
 # Secret key for form
-application.config['SECRET_KEY'] = environ.get('SECRET_KEY')
+application.config['SECRET_KEY'] = '123123123lsdfj1231231'
 
 from trovenow_url_parser import api_routes
 from trovenow_url_parser import routes
