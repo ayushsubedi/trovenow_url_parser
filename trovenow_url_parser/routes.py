@@ -11,5 +11,4 @@ def index():
     if url is None:
         url = "https://trovenow.com/"
     result = ContentReader.get_content(url, 'yes')
-    print (result)
     return render_template('demo.html', form=form, result=result)
