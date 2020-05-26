@@ -5,7 +5,7 @@ from os.path import join, dirname
 from flask_cors import CORS
 
 application = Flask(__name__)
-application = app
+app = application
 
 # Linux
 # dotenv_path = join(dirname(__file__), '..', '.env')
