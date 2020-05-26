@@ -12,3 +12,4 @@ awsebcli==3.16.0
 Pillow==6.2.1
 numpy==1.18.4
 scipy==1.4.1
+Werkzeug==1.0.1
