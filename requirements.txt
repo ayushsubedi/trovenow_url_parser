@@ -1,6 +1,6 @@
 Flask==1.1.2
 Flask-WTF==0.14.3
-Jinja2==2.11.2
+Jinja2==2.11.3
 newspaper3k==0.2.8 
 nltk==3.5
 Flask-Cors==3.0.8 
