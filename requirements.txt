@@ -9,7 +9,7 @@ python-dotenv==0.13.0
 validators==0.15.0
 gensim==3.8.3
 awsebcli==3.18.1
-Pillow==7.1.2
+Pillow==8.2.0
 numpy==1.18.4
 scipy==1.4.1
 Werkzeug==1.0.1
